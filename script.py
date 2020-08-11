@@ -82,8 +82,8 @@ allSplittedWordsShame=wordSplitter(sentenceShame)
 allSplittedWordsGuilt=wordSplitter(sentenceGuilt)
 
 wordCounter(allSplittedWords)  #call it to count elements of the list
-mainKeyArr=keyArr  #holds the word
-mainValArr=valueArr #holds the correspondent words frequency
+mainKeyArr=keyArr  #holds the word suppose if dataset has 'i am happy' then it will hold i,am,happy
+mainValArr=valueArr #holds the correspondent words frequency, suppose 'i' appeared 12 times in dataset
 keyArr=[]  #always empty this global var after calling "wordCounter"
 valueArr=[]  #always empty this global var after calling "wordCounter"
 
@@ -134,12 +134,12 @@ dataDictionaryArray=[]
 count=0
 
 for x in mainKeyArr:
-    dataDictionary["word"] = x
-    indexVar = mainKeyArr.index(x)
-    dataDictionary["frequency"] = mainValArr[indexVar]
+    dataDictionary["word"] = x  #we are putting the word in a dictionary
+    indexVar = mainKeyArr.index(x)#we are also putting the index of that word in the dictionary
+    dataDictionary["frequency"] = mainValArr[indexVar]#we are entering how many time that word has appeared
 
     if x in joyKeyArr:   #counting how many times a word appear in joy category
-        indexVar = joyKeyArr.index(x)
+        indexVar = joyKeyArr.index(x)#joyKeyArr holds the words that appeared in joy category
         dataDictionary["frequencyJoy"] = joyValArr[indexVar]
     else:
         dataDictionary["frequencyJoy"] = 0
@@ -241,7 +241,7 @@ while(1):
                 hashTable["freqShame"] = float(d["frequencyShame"] / d["frequency"])
                 hashTable["freqGuilt"] = float(d["frequencyGuilt"] / d["frequency"])
 
-                if x=="not":
+                if x=="not" or x=="never" or x=="seldom":
                     negate=1
                 else:
                     negate=0
@@ -262,7 +262,3 @@ while(1):
 
     if(val=="exit"):
         break
-
-
-
-
